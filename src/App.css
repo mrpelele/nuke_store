@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+body {
+
+  padding: 0;
+  margin: 0;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+#nabar {
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  height: 6rem;
+  width: 100%;
+  background-color: rgb(150, 66, 66);
   align-items: center;
+
+}
+
+#nabarLogo {
+
+  display: flex;
+  font-size: 40px;
+
+}
+
+#nabarLink {
+
+  position: relative;
+  left: 5rem;
+  width: 80rem;
+  height: 2rem;
+  display: flex;
+  align-self: flex-end;
+  justify-content: space-around;
+
+
+}
+
+#cartST {
+
+  position: relative;
+  left: 25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+
+}
+
+#Gener {
+
+  display: flex;
+  position: relative;
+  width: 20rem;
+  height: 30rem;
+  background-color: rgb(109, 103, 103);
+  top: 3rem;
+  left: 3rem;
+  flex-direction: column;
+
+}
+
+#GenerT {
+
+  display: flex;
+  position: relative;
+  font-size: 1.5rem;
+  width: 100%;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  top: 1rem;
+
+
 }
 
-.App-link {
-  color: #61dafb;
+#GenerP {
+
+  display: flex;
+  position: relative;
+  top: 8rem;
+  width: 100%;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
