@@ -1,6 +1,6 @@
 import React from 'react';
-import '../App.css'
-import {CartW} from './CartW'
+import './NavBar.css'
+import {CartW} from '../Cart/CartW'
 
 export const NavBar = () => {
 

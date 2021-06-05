@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css'
+import './CartW.css'
 
 const CARTING = 'https://www.pinclipart.com/picdir/big/83-831322_shopping-cart-logo-png-white-clipart.png';
 

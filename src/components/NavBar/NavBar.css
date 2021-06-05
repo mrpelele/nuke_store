@@ -1,0 +1,29 @@
+#nabar {
+
+    display: flex;
+    height: 6rem;
+    width: 100%;
+    background-color: rgb(150, 66, 66);
+    align-items: center;
+  
+  }
+  
+  #nabarLogo {
+  
+    display: flex;
+    font-size: 40px;
+  
+  }
+  
+  #nabarLink {
+  
+    position: relative;
+    left: 5rem;
+    width: 80rem;
+    height: 2rem;
+    display: flex;
+    align-self: flex-end;
+    justify-content: space-around;
+  
+  
+  }

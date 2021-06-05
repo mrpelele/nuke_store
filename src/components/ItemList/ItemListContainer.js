@@ -1,5 +1,6 @@
 import React from 'react';
-import '../../App.css'
+import './ItemListContainer.css';
+import {Counter} from '../Counter/Counter'; 
 
 const xd = 'https://i.imgur.com/zr9W8gY.jpg';
 
@@ -18,7 +19,7 @@ export const ItemLister = () => {
 
     return (
     
-        <div id='Gener'>
+        <section id='Gener'>
 
             <div>
 
@@ -28,13 +29,17 @@ export const ItemLister = () => {
 
             <div>
 
-                <p id='GenerP'>this is the content of a generic container</p>
-                <img src={xd} style={aj} alt=""></img>
+                <img src={xd} style={aj} alt="imagen de posible compra"></img>
                 
             </div>
 
+            <div id='GenerBuy'>
 
-        </div>
+                <Counter/>
+
+            </div>
+
+        </section>
 
 
 
