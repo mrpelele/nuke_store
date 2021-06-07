@@ -17,6 +17,22 @@ const SUPERBOTON = {
 
 };
 
+const carritou = {
+
+    display:"flex",
+    position: "absolute",
+    textAlign:"center",
+    alignItems:"center",
+    justifyContent:"center",
+    backgroundColor:"white",
+    left: "45%",
+    top: "0%",
+    height: "100%",
+    width:"40%",
+    borderStyle:"none"
+
+};
+
 export const Counter = () => {
 
     const  [count,setCount] = useState (0);
@@ -27,11 +43,17 @@ export const Counter = () => {
 
             <p className="XD">{count}</p>
 
-            <button style={SUPERBOTON} onClick={() => setCount(count+1)}> + </button>
-            <button style={SUPERBOTON} onClick={() => setCount(count-1)}> - </button>
+            <button style={carritou}>Agregar al carrito</button>
+
+            <button disabled={false} style={SUPERBOTON} onClick={() => setCount(count+1)}> + </button>
+            <button disabled={false} style={SUPERBOTON} onClick={() => setCount(count-1)}> - </button>
+
+            
 
         </div>
 
     );
 
 }
+
+/*if (count>'0') {count-1} else {count+0} */
