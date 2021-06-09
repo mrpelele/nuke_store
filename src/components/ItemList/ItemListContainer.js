@@ -18,24 +18,11 @@ const aj = {
 
 export const ItemLister = () => {
 
-        /* contador */
-        const  [count,setCount] = useState (0);
+    function buy() {
 
-        const prus = () => {
-    
-            if (count<4){
-                setCount(count+1);
-            } else {}   
-    
-        }
-    
-        const minus = () => {
-    
-            if (count>0) {
-                setCount(count-1);
-            } else {}
-        }
-    
+        alert("you added your unit/s to the cart")
+
+    }
 
     return (
     
@@ -55,7 +42,7 @@ export const ItemLister = () => {
 
             <div id='GenerBuy'>
 
-                <Counter prus={prus} minus={minus} count={count}/>
+                <Counter stock="4" noStock="0" buy={buy}/>
 
             </div>
 

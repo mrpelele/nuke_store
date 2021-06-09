@@ -37,13 +37,28 @@ const carritou = {
 
 };
 
-export function Counter({prus,minus,count}) {
+export function Counter({stock,noStock,buy}) {
 
-    function buy() {
+    /* contador */
 
-        alert("you added "+count+" unit/s to the cart")
+    const  [count,setCount] = useState (0);
+
+    const prus = () => {
+    
+        if (count<stock){
+            setCount(count+1);
+        } else {}   
 
     }
+
+    const minus = () => {
+
+        if (count>noStock) {
+            setCount(count-1);
+        } else {}
+    }
+
+
 
     /* return */
 
