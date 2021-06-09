@@ -13,8 +13,12 @@ const SUPERBOTON = {
     textAlign: "center",
     textDecoration: "none",
     width: "3rem",
-    height: "50%"
+    height: "50%",
+    '& > SUPERBOTON.disabled': {
 
+        backgroundColor: "gray"
+
+    }
 };
 
 const carritou = {
@@ -33,9 +37,15 @@ const carritou = {
 
 };
 
-export const Counter = () => {
+export function Counter({prus,minus,count}) {
 
-    const  [count,setCount] = useState (0);
+    function buy() {
+
+        alert("you added "+count+" unit/s to the cart")
+
+    }
+
+    /* return */
 
     return (
 
@@ -43,17 +53,15 @@ export const Counter = () => {
 
             <p className="XD">{count}</p>
 
-            <button style={carritou}>Agregar al carrito</button>
+            <button style={carritou} onClick={buy}>Agregar al carrito</button>
 
-            <button disabled={false} style={SUPERBOTON} onClick={() => setCount(count+1)}> + </button>
-            <button disabled={false} style={SUPERBOTON} onClick={() => setCount(count-1)}> - </button>
+            <button disabled={count>3?true:false} style={SUPERBOTON} onClick={prus}> + </button>
+            <button disabled={count<1?true:false} style={SUPERBOTON} onClick={minus}> - </button>
 
-            
+                
 
         </div>
 
     );
-
 }
 
-/*if (count>'0') {count-1} else {count+0} */
