@@ -1,10 +1,12 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import './ItemListContainer.css';
 import {Counter} from '../Counter/Counter';
-import {Lister} from '../ItemList/items/ItemList'
+import {Showing} from '../ItemList/items/ItemList'
 
 
 const xd = 'https://i.imgur.com/zr9W8gY.jpg';
+
+
 
 const aj = {
 
@@ -21,7 +23,50 @@ const aj = {
         
 };
 
+
 export const ItemLister = () => {
+
+
+    const promiseTry = () => {
+        return new Promise ((resolve,reject) => {
+    
+            setTimeout(()=>resolve(
+            [
+                {id:1, radioactivo:false, name:'misil',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
+                {id:2, radioactivo:true,name:'bomba atómica',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
+                {id:3, radioactivo:false,name:'explosivos',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
+                {id:4, radioactivo:false,name:'cañon',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
+                {id:5, radioactivo:false,name:'satelite',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
+                {id:6, radioactivo:false,name:'napalm',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
+                {id:7, radioactivo:true,name:'uranio empobrecido',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
+                {id:8, radioactivo:true,name:'plasma',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'}
+            ]
+            ),1000)
+    
+        })
+    
+    }
+
+    const [show, setShow] = useState ([])
+    
+       
+        const execute = () => {
+    
+            promiseTry().then(data => {
+    
+                    setShow(data)
+                    
+            })
+    
+        }
+    
+        useEffect (()=>{
+    
+            execute();
+    
+        },[])
+        
+    
 
     function buy() {
 
@@ -41,7 +86,7 @@ export const ItemLister = () => {
 
             <div style={aj}>
 
-                <Lister promiseTry={promiseTry}/>
+                <Showing show={show}/>
                 
             </div>
 
@@ -65,22 +110,3 @@ export const ItemLister = () => {
 
 } 
 
-export const promiseTry = () => {
-    return new Promise ((resolve,reject) => {
-
-        setTimeout(()=>resolve(
-        [
-            {id:1, radioactivo:false, name:'misil',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
-            {id:2, radioactivo:true,name:'bomba atómica',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
-            {id:3, radioactivo:false,name:'explosivos',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
-            {id:4, radioactivo:false,name:'cañon',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
-            {id:5, radioactivo:false,name:'satelite',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
-            {id:6, radioactivo:false,name:'napalm',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
-            {id:7, radioactivo:true,name:'uranio empobrecido',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
-            {id:8, radioactivo:true,name:'plasma',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'}
-        ]
-        ),2000)
-
-    })
-
-}
