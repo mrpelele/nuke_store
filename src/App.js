@@ -10,20 +10,6 @@ function App() {
       
       <NavBar/>
       <ItemLister/>
-      <ItemLister/>
-      <ItemLister/>
-      <ItemLister/>
-      <ItemLister/>
-      <ItemLister/>
-      <ItemLister/>
-      <ItemLister/>
-      <ItemLister/>
-      <ItemLister/>
-      <ItemLister/>
-      <ItemLister/>
-      <ItemLister/>
-      <ItemLister/>
-      <ItemLister/>
       
     
     </div>

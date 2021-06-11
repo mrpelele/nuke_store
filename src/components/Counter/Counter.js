@@ -58,8 +58,6 @@ export function Counter({stock,noStock,buy}) {
         } else {}
     }
 
-
-
     /* return */
 
     return (
