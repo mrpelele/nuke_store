@@ -39,7 +39,6 @@ export const ItemLister = () => {
                 {id:5, radioactivo:false,name:'satelite',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
                 {id:6, radioactivo:false,name:'napalm',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
                 {id:7, radioactivo:true,name:'uranio empobrecido',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
-                {id:8, radioactivo:true,name:'plasma',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'}
             ]
             ),1000)
     
@@ -68,11 +67,7 @@ export const ItemLister = () => {
         
     
 
-    function buy() {
 
-        alert("you added your unit/s to the cart")
-
-    }
 
     return (
     
@@ -80,7 +75,7 @@ export const ItemLister = () => {
 
             <div>
 
-                <title id='GenerT'>this is a generic container</title>
+                <title id='GenerT'>Available Items</title>
 
             </div>
 
@@ -88,12 +83,6 @@ export const ItemLister = () => {
 
                 <Showing show={show}/>
                 
-            </div>
-
-            <div id='GenerBuy'>
-
-                <Counter stock="4" noStock="0" buy={buy}/>
-
             </div>
 
         </section>

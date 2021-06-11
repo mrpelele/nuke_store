@@ -5,6 +5,7 @@
   background-color: rgb(109, 103, 103);
   top: 3rem;    
   left: 3rem;
+  width: 25rem;
   margin-right: 3rem;
   margin-bottom: 5rem;
   flex-direction: column;
@@ -28,8 +29,8 @@
 
   display: flex;
   position: relative;
-  top: 2em;
-  width: 100%;
+  top: 1em;
+  width: 85%;
   height: 3.5rem;
   background-color: rgba(240, 238, 238, 0.836);
   border-style: solid;
