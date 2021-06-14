@@ -1,12 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import './ItemListContainer.css';
-import {Counter} from '../Counter/Counter';
 import {Showing} from '../ItemList/items/ItemList'
-
-
-const xd = 'https://i.imgur.com/zr9W8gY.jpg';
-
-
 
 const aj = {
 
@@ -71,7 +65,7 @@ export const ItemLister = () => {
 
     return (
     
-        <section id='Gener'>
+        <section>
 
             <div>
 
@@ -79,7 +73,7 @@ export const ItemLister = () => {
 
             </div>
 
-            <div style={aj}>
+            <div>
 
                 <Showing show={show}/>
                 

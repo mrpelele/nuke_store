@@ -11,7 +11,7 @@ export const Showing = ({show}) =>{
             {show.map((showcase)=>
             
                 <Item showcase={showcase}/>
-
+                
             )}
 
         </div>
