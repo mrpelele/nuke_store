@@ -73,7 +73,7 @@ export const ItemLister = () => {
 
             </div>
 
-            <div>
+            <div style={aj}>
 
                 <Showing show={show}/>
                 

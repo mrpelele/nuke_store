@@ -1,7 +1,5 @@
 import React from 'react'
 import {Counter} from '../../Counter/Counter'
-import {DetailLister} from '../../ItemListDetail/ItemDetailContainer'
-
 
 const container = {
 
@@ -15,8 +13,7 @@ const container = {
     borderStyle: "solid",
     borderWidth: "3px",
     alignItems: "center",
-    marginRight: "1rem",
-    marginBottom: "3rem"
+    margin: "1rem"
 }
 const imgQ = {
 
@@ -40,12 +37,6 @@ return (
             <h2> {showcase.name} </h2> 
 
             <img style={imgQ} src={showcase.img} alt="tom"></img>
-
-            <div>
-
-                <DetailLister/> 
-
-            </div>
 
 
             <div id='GenerBuy'>
