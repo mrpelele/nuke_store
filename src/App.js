@@ -3,20 +3,28 @@ import './App.css';
 import {NavBar} from './components/NavBar/NavBar'
 import {ItemLister} from './components/ItemList/ItemListContainer'
 import {DetailLister} from './components/ItemListDetail/ItemDetailContainer'
+import {BrowserRouter,Switch,Route} from 'react-router-dom'
 
 
 function App() {
   return (
-    <div>
-      
-      <NavBar/>
-      
-      <ItemLister/>
+    <BrowserRouter>
 
-      <DetailLister/>
-      
-    
-    </div>
+      <NavBar/>
+
+        <Switch>
+
+          <Route exact path="/">
+            <ItemLister/>
+          </Route>
+
+          <Route path="/item/:id">
+            <DetailLister/>
+          </Route>  
+
+        </Switch>
+
+    </BrowserRouter>
   );
 }
 

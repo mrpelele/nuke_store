@@ -7,13 +7,11 @@ const aj = {
     position:"relative",
     display: "flex",
     flexDirection:"column",
-    alignItems:"flex-start",
     position: "relative",
-    top: "2rem",
-    width: "90%",
-    height: "75%",
-    left: "1rem",
-    overflow: "hidden"
+    justifyContent:"flex-end",
+    alignItems:"center",
+    width: "100%",
+    height: "100%"
         
 };
 
@@ -26,14 +24,18 @@ export const ItemLister = () => {
     
             setTimeout(()=>resolve(
             [
-                {id:1, radioactivo:false, name:'misil',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
-                {id:2, radioactivo:true,name:'bomba atómica',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
-                {id:3, radioactivo:false,name:'explosivos',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
-                {id:4, radioactivo:false,name:'cañon',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
-                {id:5, radioactivo:false,name:'satelite',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
-                {id:6, radioactivo:false,name:'napalm',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
-                {id:7, radioactivo:true,name:'uranio empobrecido',img:'https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg'},
-            ]
+                {"id":1,"radioactivo":false,"name":"Missile","description":"low cost proyectile","range":"short","price":"$100","img":"https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg"},
+                {"id":2,"radioactivo":true,"name":"Nuke","description":"high cost proyectile","range":"long","price":"$2000","img":"https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg"},
+                {"id":3,"radioactivo":false,"name":"Explosives","description":"manually detonated explosives","range":"short","price":"$50","img":"https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg"},
+                {"id":4,"radioactivo":false,"name":"Cannon","description":"cheap and unreliable weapon","range":"short","price":"$8","img":"https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg"},
+                {"id":5,"radioactivo":false,"name":"Satelite","description":"non-combat recon instrument","range":"long","price":"$10000","img":"https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg"},
+                {"id":6,"radioactivo":false,"name":"Napalm","description":"this should not be used","range":"non-existent","price":"$160","img":"https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg"},
+                {"id":7,"radioactivo":true,"name":"Grenade","description":"short range throwable explosive","range":"non-existent","price":"$2","img":"https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg"},
+                {"id":8,"radioactivo":true,"name":"Depleted Uranium","description":"death","range":"non-existent","price":"$8000","img":"https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg"},
+                {"id":9,"radioactivo":true,"name":"Radioactive Waste","description":"Industry waste, do not ingest","range":"-","price":"$25","img":"https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg"},
+                {"id":10,"radioactivo":true,"name":"Plasma","description":"I don't know how this works","range":"-","price":"$20000","img":"https://www.meme-arsenal.com/memes/ba4a6ca48fb800a51fd51540752607aa.jpg"}
+            ]                    
+                    
             ),1000)
     
         })
@@ -65,7 +67,7 @@ export const ItemLister = () => {
 
     return (
     
-        <section>
+        <section className="Gener">
 
             <div>
 

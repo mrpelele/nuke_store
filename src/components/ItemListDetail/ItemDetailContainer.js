@@ -1,34 +1,37 @@
 import React, {useState,useEffect} from 'react'
+import {useParams} from 'react-router-dom'
 import {Detailer} from './ItemDetail'
 
 export const DetailLister = () => { 
-    
-    const fetchItems = () => {
-    
-         fetch('https://mocki.io/v1/24615444-6dbb-426d-b487-3c341f45e88f')
-        .then(dataReceive => dataReceive.json()) 
-        .then(data => setShow(data))    
-    
-    }
 
     const [Show, setShow] = useState ([])
+    const {id} = useParams();
 
-         useEffect (()=>{
+    const fetchItems = () => {
 
-            fetchItems()
+        fetch('https://mocki.io/v1/86dd4d81-585b-430c-b75d-af46b60fb29c')
+            .then(dataReceive => dataReceive.json()) 
+            .then(data => setShow(data.filter((generic) => generic.id == id)))
+            
+       
+    }
+        
+    useEffect (()=>{
 
-        },[])
+        fetchItems()
+
+    },[])
 
     return (
 
-            <div>
+        <div>
 
-                {Show.map((Show)=>
+            {Show.map((Show)=>
 
-                    <Detailer Show={Show}/>        
-                )}
+                <Detailer Show={Show}/>        
+            )}
 
-            </div>
+        </div>
 
     )
 }

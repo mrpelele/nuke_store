@@ -1,6 +1,7 @@
 import React from 'react';
 import './NavBar.css'
 import {CartW} from '../Cart/CartW'
+import {NavLink} from 'react-router-dom'
 
 export const NavBar = () => {
 
@@ -8,7 +9,7 @@ export const NavBar = () => {
 
         <header id="nabar">
 
-            <p id="nabarLogo"> nuke logo</p>
+            <p id="nabarLogo" ><NavLink to={'/'}>nuke logo</NavLink> </p>
 
             <div id="nabarLink">
 

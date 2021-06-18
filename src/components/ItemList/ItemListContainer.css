@@ -1,11 +1,21 @@
+.Gener {
+
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  margin: 4rem;
+  top: -2rem;
+  
+}
+
 #GenerT {
   
   display: flex;
   position: relative;
-  font-size: 1.5rem;
+  font-size: 2rem;
   width: 100%;
   justify-content: center;
-  top: 1rem;
   
 }
 
@@ -14,7 +24,6 @@
   display: flex;
   position: relative;
   width: 100%;
-  top: 2px;
   height: 3.5rem;
   background-color: rgba(240, 238, 238, 0.836);
   border-style: solid;

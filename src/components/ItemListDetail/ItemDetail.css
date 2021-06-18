@@ -1,0 +1,28 @@
+.main {
+
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+    flex-direction: column;
+    font-size: 2.5rem;
+
+}
+
+.carrousel {
+
+    position: absolute;
+    top: 20rem;
+    left: 20rem;
+    padding: 20rem;
+    background-color: aqua;
+
+}
+
+.details {
+
+    display: flex;
+    position: relative;
+    font-size: 2rem;
+    flex-direction: column;
+
+}
