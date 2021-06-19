@@ -6,24 +6,53 @@
     background-color: rgb(150, 66, 66);
     align-items: center;
   
-  }
+}
   
-  #nabarLogo {
+#nabarLogo {
   
-    display: flex;
-    font-size: 40px;
+  display: flex;
+  font-size: 40px;
   
-  }
+}
   
-  #nabarLink {
+#nabarLink {
   
-    position: relative;
-    left: 5rem;
-    width: 80rem;
-    height: 2rem;
-    display: flex;
-    align-self: flex-end;
-    justify-content: space-around;
+  position: relative;
+  left: 5rem;
+  width: 80rem;
+  height: 2rem;
+  display: flex;
+  align-self: flex-end;
+  justify-content: space-around;
   
+}
+
+.IMFALLING {
+
+  position: relative;
+  display: inline-block;
+
+}
+
+.IFELL {
+
+  display: none;
+  position: absolute;
+  border-style: solid;
+  border-radius: 1rem;
+  border-width: 0.15rem;
+  border-color: black;
+  background-color: white;
+  padding: 1rem 1.5rem;
+  z-index: 1;
+  list-style: none;
+  top: 0.6rem;
   
-  }
+
+}
+
+.IMFALLING:hover .IFELL {
+
+  display: block;
+
+}

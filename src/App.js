@@ -18,6 +18,10 @@ function App() {
             <ItemLister/>
           </Route>
 
+          <Route path="/ranges/:range">
+            <ItemLister/>
+          </Route>
+
           <Route path="/item/:id">
             <DetailLister/>
           </Route>  
