@@ -18,7 +18,7 @@ function App() {
             <ItemLister/>
           </Route>
 
-          <Route path="/ranges/:range">
+          <Route path="/range/:ranges">
             <ItemLister/>
           </Route>
 
