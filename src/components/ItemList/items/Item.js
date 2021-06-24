@@ -23,13 +23,22 @@ const imgQ = {
 
 }
 
-function buy() {
-
-    alert("you added your unit/s to the cart")
-
-}
 
 export const Item = ({showcase}) => {
+
+    const [Bought,setBought] = React.useState(0);
+
+    function Buy(data) {
+
+        setBought(data)
+
+            if (data>0) {
+                alert("you added "+data+" unit/s to your cart")
+            }
+
+        console.log(data)
+              
+    }
 
 return (  
 
@@ -42,7 +51,7 @@ return (
 
             <div id='GenerBuy'>
 
-                <Counter stock="4" noStock="0" buy={buy}/>
+                <Counter stock="4" noStock="0" Buy={Buy}/>
 
             </div> 
             

@@ -5,7 +5,8 @@ import {NavLink} from 'react-router-dom'
 
 export const NavBar = () => {
 
-    return (<div>
+    return (
+    <div>
 
         <header id="nabar">
 

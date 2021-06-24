@@ -47,7 +47,6 @@ export const ItemLister = () => {
 
     const [show, setShow] = useState ([])
     const {ranges} = useParams();
-    console.log(ranges)
     
        
         const execute = () => {

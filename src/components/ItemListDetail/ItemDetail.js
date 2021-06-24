@@ -1,5 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './ItemDetail.css'
+import {Counter} from '../Counter/Counter'
+
+/*import {BuyMessage} from '../Counter/BuyMessage'
+import {CustomComponent} from '../Counter/CustomComponent'*/
 
 const imgSTYLE = {
 
@@ -8,14 +12,84 @@ const imgSTYLE = {
 
 }
 
+const GenerBuy = {
+
+    display: "flex",
+    position: "relative",
+    width: "100%",
+    height: "3.5rem",
+    backgroundColor: "rgba(240, 238, 238, 0.836)",
+    borderStyle: "solid",
+    borderWidth: "1px",
+    alignSelf: "center",
+    justifyContent: "flex-end",
+    fontSize: "1rem"
+  
+}
+
 const nams = {
 
     position: "relative",
-    right: "4.9rem"
+    alignSelf: "center",
+    fontSize: "10rem"
 
 }
 
+/*const ButtonComponent =({stockUpdate,stock}) =>{
+    return (
+        <button onClick={() => stockUpdate(stock+1)}>
+
+            
+
+        </button>
+    )
+}
+
+const StockHandle = ({component:CustomComponent}) => {
+
+    const [stock,setStock] = React.useState(0)
+
+    const controlStock = props => {
+
+        setStock(props)
+
+    }
+
+    return (
+    <div>
+        <BuyMessage stock={stock}/>
+
+        <CustomComponent stock={stock} stockUpdate={controlStock}/>
+    </div>
+
+    )
+
+}
+*/
+
+
+
+
+
+
+
 export const Detailer =({Show}) => {
+
+    const [Bought,setBought] = useState(0);
+
+    function Buy(data) {
+
+        setBought(data)
+
+            if (data>0) {
+                alert("you added "+data+" unit/s to your cart")
+            }
+
+        console.log(data)
+              
+    }
+
+    
 
     return (
 
@@ -25,15 +99,15 @@ export const Detailer =({Show}) => {
 
                 <h2 style={nams}>{Show.name}</h2>
 
-                <img style={imgSTYLE} src={Show.img} alt=""></img>
+                <img style={imgSTYLE} src={Show.img} alt=""></img>           
 
            </div>
 
-           <div className="carrousel">
+           <div style={GenerBuy}>
+                    <Counter stock="4" noStock="0" Buy={Buy}/>
 
-                <p>aca va a ir un carrousel e</p>
-
-           </div>
+                    
+            </div> 
 
             <div className="details">
 
@@ -48,6 +122,8 @@ export const Detailer =({Show}) => {
             </div>
 
         </section>
+
+        /*<StockHandle component={ButtonComponent}/>*/
 
     )
 

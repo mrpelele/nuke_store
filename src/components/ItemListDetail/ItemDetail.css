@@ -2,18 +2,20 @@
 
     display: flex;
     position: relative;
-    align-items: flex-end;
-    flex-direction: column;
+    justify-content: space-around;
+    flex-direction: row-reverse;
     font-size: 2.5rem;
 
 }
 
 .carrousel {
 
-    position: absolute;
-    top: 20rem;
-    left: 20rem;
+    display: flex;
+    position: relative;
     padding: 20rem;
+    left: 5rem;
+    height: 35%;
+    width: 40%;
     background-color: aqua;
 
 }
