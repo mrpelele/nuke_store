@@ -118,7 +118,7 @@ export function Counter({stock,noStock,Buy}) {
                 <ShowMessage count={count}/>
             </div>
 
-            <button style={carritou}  onClick={() => DoneDidIt(count)}>Agregar al carrito</button>
+            <button style={carritou} disabled={Intern>0?true:false}   onClick={() => DoneDidIt(count)}>Agregar al carrito</button>
             <button style={carritou3} disabled={Intern>0?false:true} onClick={() => DoneDidNot(0)}>Cancelar</button>
             <button style={carritou2} disabled={Intern>0?false:true} onClick={() => moveit.push('../cart')}>Terminar Compra</button>
 
