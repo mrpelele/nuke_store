@@ -1,5 +1,5 @@
 import './Counter.css'
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import {ShowMessage} from './ShowMessage'
 import { useHistory } from 'react-router-dom';
 
@@ -21,23 +21,6 @@ const SUPERBOTON = {
         backgroundColor: "gray"
 
     }
-};
-
-const carritou = {
-
-    display:"flex",
-    position: "absolute",
-    textAlign:"center",
-    alignItems:"center",
-    justifyContent:"center",
-    backgroundColor:"white",
-    left: "55%",
-    top: "0%",
-    height: "100%",
-    width:"20%",
-    borderStyle:"none",
-    fontSize: "1rem"
-
 };
 
 const carritou2 = {
@@ -74,24 +57,32 @@ const carritou3 = {
 
 };
 
+
+
 export function Counter({stock,noStock,Buy}) {
 
     const moveit = useHistory();
 
-    function DoneDidIt(data) { 
+    function DoneDidIt(data,Ye) { 
         Buy(data)
         setIntern(data)
+        setYe(false)
+
     }
 
     function DoneDidNot(data) {
         setIntern(data)
         setCount(data)
+        setYe(true)
     }
+
+    
 
     /* contador */
 
     const  [count,setCount] = useState (0);
-    const [Intern,setIntern] =useState(0);
+    const [Intern,setIntern] = useState(0);
+    const [Ye,setYe] = useState(true)
 
     const prus = () => {
     
@@ -118,7 +109,7 @@ export function Counter({stock,noStock,Buy}) {
                 <ShowMessage count={count}/>
             </div>
 
-            <button style={carritou} disabled={Intern>0?true:false}   onClick={() => DoneDidIt(count)}>Agregar al carrito</button>
+            <button className={Ye?"carritou":null} disabled={count<1?true:false}  onClick={() => DoneDidIt(count)}>Agregar al carrito</button>
             <button style={carritou3} disabled={Intern>0?false:true} onClick={() => DoneDidNot(0)}>Cancelar</button>
             <button style={carritou2} disabled={Intern>0?false:true} onClick={() => moveit.push('../cart')}>Terminar Compra</button>
 
