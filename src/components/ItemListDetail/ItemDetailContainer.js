@@ -1,11 +1,13 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect,useContext} from 'react'
 import {useParams} from 'react-router-dom'
 import {Detailer} from './ItemDetail'
+import {CartContext } from '../Cart/CartContext'
 
 export const DetailLister = () => { 
 
     const [Show, setShow] = useState ([])
     const {id} = useParams();
+    const [Con,setCon] = useContext(CartContext)
 
     const fetchItems = () => {
 
@@ -19,6 +21,7 @@ export const DetailLister = () => {
     useEffect (()=>{
 
         fetchItems()
+        
 
     },[])
 
@@ -26,7 +29,7 @@ export const DetailLister = () => {
 
         <div>
 
-            {Show.map((Show)=>
+            {Show.map((Show,w)=>
 
                 <Detailer Show={Show}/>        
             )}

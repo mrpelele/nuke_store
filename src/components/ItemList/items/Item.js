@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {Counter} from '../../Counter/Counter'
 import {NavLink} from 'react-router-dom'
+import {CartContext } from '../../Cart/CartContext'
+import { useHistory } from 'react-router-dom';
 
 
 const container = {
@@ -24,9 +26,12 @@ const imgQ = {
 }
 
 
-export const Item = ({showcase}) => {
+export const Item = ({showcase,w}) => {
 
     const [Bought,setBought] = React.useState(0);
+    const [Con,setCon] = useContext(CartContext)
+
+    const moveit = useHistory();  
 
     function Buy(data) {
 
@@ -40,18 +45,29 @@ export const Item = ({showcase}) => {
               
     }
 
+    function TrueBuy(data) {
+
+        setCon([...Con,data])
+
+        moveit.push('../cart')
+
+        console.log(Con)
+
+    }
+    
+
 return (  
 
 <div style={container}>
             
-            <h2><NavLink to={"/item/"+[showcase.id]}> {showcase.name} </NavLink></h2> 
+            <h2 ><NavLink to={"/item/"+[showcase.id]}> {showcase.name} </NavLink></h2> 
 
-            <img style={imgQ} src={showcase.img} alt="tom"></img>
+            <img  style={imgQ} src={showcase.img} alt="tom"></img>
 
 
             <div id='GenerBuy'>
 
-                <Counter stock="4" noStock="0" Buy={Buy}/>
+                <Counter stock="4" noStock="0" Buy={Buy} TrueBuy={TrueBuy} itemAR={showcase}/>
 
             </div> 
             

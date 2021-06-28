@@ -8,7 +8,7 @@ export const Showing = ({show}) =>{
         /*esto lo paso al list para mostrar los items*/
         <div>
             
-            {show.map((showcase)=>
+            {show.map((showcase,w)=>
             
                 <Item showcase={showcase}/>
                 

@@ -1,5 +1,6 @@
 import './Counter.css'
 import React, {useState,useEffect} from 'react'
+import ReactDOM from 'react-dom'
 import {ShowMessage} from './ShowMessage'
 import { useHistory } from 'react-router-dom';
 
@@ -59,11 +60,11 @@ const carritou3 = {
 
 
 
-export function Counter({stock,noStock,Buy}) {
+export function Counter({stock,noStock,Buy,TrueBuy,itemAR}) {
 
-    const moveit = useHistory();
+    
 
-    function DoneDidIt(data,Ye) { 
+    function DoneDidIt(data) { 
         Buy(data)
         setIntern(data)
         setYe(false)
@@ -73,7 +74,7 @@ export function Counter({stock,noStock,Buy}) {
     function DoneDidNot(data) {
         setIntern(data)
         setCount(data)
-        setYe(true)
+        setYe(true)       
     }
 
     
@@ -109,9 +110,9 @@ export function Counter({stock,noStock,Buy}) {
                 <ShowMessage count={count}/>
             </div>
 
-            <button className={Ye?"carritou":null} disabled={count<1?true:false}  onClick={() => DoneDidIt(count)}>Agregar al carrito</button>
+            <button className={Ye?'carritou':'carritouD'} disabled={count<1?true:false} onClick={() => DoneDidIt(count)}>Agregar al carrito</button>
             <button style={carritou3} disabled={Intern>0?false:true} onClick={() => DoneDidNot(0)}>Cancelar</button>
-            <button style={carritou2} disabled={Intern>0?false:true} onClick={() => moveit.push('../cart')}>Terminar Compra</button>
+            <button style={carritou2} disabled={Intern>0?false:true} onClick={() => TrueBuy(itemAR)}>Terminar Compra</button>
 
             <button disabled={count>3?true:false} style={SUPERBOTON} onClick={prus}> + </button>
             <button disabled={count<1?true:false} style={SUPERBOTON} onClick={minus}> - </button>

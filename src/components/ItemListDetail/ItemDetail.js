@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import './ItemDetail.css'
 import {Counter} from '../Counter/Counter'
+import {CartContext } from '../Cart/CartContext'
+import { useHistory } from 'react-router-dom';
 
-/*import {BuyMessage} from '../Counter/BuyMessage'
-import {CustomComponent} from '../Counter/CustomComponent'*/
 
 const imgSTYLE = {
 
@@ -35,47 +35,12 @@ const nams = {
 
 }
 
-/*const ButtonComponent =({stockUpdate,stock}) =>{
-    return (
-        <button onClick={() => stockUpdate(stock+1)}>
-
-            
-
-        </button>
-    )
-}
-
-const StockHandle = ({component:CustomComponent}) => {
-
-    const [stock,setStock] = React.useState(0)
-
-    const controlStock = props => {
-
-        setStock(props)
-
-    }
-
-    return (
-    <div>
-        <BuyMessage stock={stock}/>
-
-        <CustomComponent stock={stock} stockUpdate={controlStock}/>
-    </div>
-
-    )
-
-}
-*/
-
-
-
-
-
-
-
-export const Detailer =({Show}) => {
+export const Detailer =({Show,w}) => {
 
     const [Bought,setBought] = useState(0);
+    const [Con,setCon] = useContext(CartContext)
+
+    const moveit = useHistory();
 
     function Buy(data) {
 
@@ -89,6 +54,16 @@ export const Detailer =({Show}) => {
               
     }
 
+    function TrueBuy(data) {
+
+        setCon([...Con,data])
+
+        console.log(Con)
+
+        moveit.push('../cart')     
+
+    }
+
     
 
     return (
@@ -97,14 +72,14 @@ export const Detailer =({Show}) => {
 
            <div className="main">
 
-                <h2 style={nams}>{Show.name}</h2>
+                <h2  style={nams}>{Show.name}</h2>
 
-                <img style={imgSTYLE} src={Show.img} alt=""></img>           
+                <img  style={imgSTYLE} src={Show.img} alt=""></img>           
 
            </div>
 
            <div style={GenerBuy}>
-                    <Counter stock="4" noStock="0" Buy={Buy}/>
+                    <Counter stock="4" noStock="0" Buy={Buy} TrueBuy={TrueBuy} itemAR={Show}/>
 
                     
             </div> 
@@ -113,17 +88,16 @@ export const Detailer =({Show}) => {
 
                 <h3>Item Details</h3>
 
-                <p>{Show.description}</p>
+                <p >{Show.description}</p>
 
-                <p>Range: {Show.range}</p>
+                <p >Range: {Show.range}</p>
 
-                <p>Price: {Show.price}</p>
+                <p >Price: {Show.price}</p>
                 
             </div>
 
         </section>
 
-        /*<StockHandle component={ButtonComponent}/>*/
 
     )
 
