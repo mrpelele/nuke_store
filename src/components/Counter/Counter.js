@@ -12,16 +12,11 @@ const SUPERBOTON = {
     border: "none",
     backgroundColor: "white",
     color: "black",
-    fontSize: "1.5rem",
+    fontSize: "1.4rem",
     textAlign: "center",
     textDecoration: "none",
-    width: "3rem",
-    height: "50%",
-    '& > SUPERBOTON.disabled': {
+    width: "3rem"
 
-        backgroundColor: "gray"
-
-    }
 };
 
 const carritou2 = {
@@ -58,32 +53,37 @@ const carritou3 = {
 
 };
 
+const carritouD = {
+
+    visibility: "hidden"
+
+};
+
 
 
 export function Counter({stock,noStock,Buy,TrueBuy,itemAR}) {
 
-    
+    let TheClass = 'carritou'
 
     function DoneDidIt(data) { 
         Buy(data)
         setIntern(data)
-        setYe(false)
+        setClassChange(false)
 
     }
 
     function DoneDidNot(data) {
         setIntern(data)
         setCount(data)
-        setYe(true)       
-    }
-
-    
+        setClassChange(true)
+        
+    }  
 
     /* contador */
 
     const  [count,setCount] = useState (0);
     const [Intern,setIntern] = useState(0);
-    const [Ye,setYe] = useState(true)
+    const [ClassChange,setClassChange] = useState(true)
 
     const prus = () => {
     
@@ -110,14 +110,16 @@ export function Counter({stock,noStock,Buy,TrueBuy,itemAR}) {
                 <ShowMessage count={count}/>
             </div>
 
-            <button className={Ye?'carritou':'carritouD'} disabled={count<1?true:false} onClick={() => DoneDidIt(count)}>Agregar al carrito</button>
             <button style={carritou3} disabled={Intern>0?false:true} onClick={() => DoneDidNot(0)}>Cancelar</button>
             <button style={carritou2} disabled={Intern>0?false:true} onClick={() => TrueBuy(itemAR)}>Terminar Compra</button>
-
+            
+            <div style={ClassChange?null:carritouD}>
+            
+            <button className={'carritou'} disabled={count<1?true:false} onClick={() => DoneDidIt(count)}>Agregar al carrito</button>
             <button disabled={count>3?true:false} style={SUPERBOTON} onClick={prus}> + </button>
             <button disabled={count<1?true:false} style={SUPERBOTON} onClick={minus}> - </button>
-
-                
+            
+            </div>
 
         </div>
 
