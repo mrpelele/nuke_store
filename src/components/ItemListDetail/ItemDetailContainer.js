@@ -7,7 +7,6 @@ export const DetailLister = () => {
 
     const [Show, setShow] = useState ([])
     const {id} = useParams();
-    const [Con,setCon] = useContext(CartContext)
 
     const fetchItems = () => {
 

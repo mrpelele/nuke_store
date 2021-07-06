@@ -28,32 +28,7 @@ const imgQ = {
 
 export const Item = ({showcase,w}) => {
 
-    const [Bought,setBought] = React.useState(0);
-    const [Con,setCon] = useContext(CartContext)
-
-    const moveit = useHistory();  
-
-    function Buy(data) {
-
-        setBought(data)
-
-            if (data>0) {
-                alert("you added "+data+" unit/s to your cart")
-            }
-
-        console.log(data)
-              
-    }
-
-    function TrueBuy(data) {
-
-        setCon([...Con,data])
-
-        moveit.push('../cart')
-
-        console.log(Con)
-
-    }
+   
     
 
 return (  
@@ -67,7 +42,7 @@ return (
 
             <div id='GenerBuy'>
 
-                <Counter stock="4" noStock="0" Buy={Buy} TrueBuy={TrueBuy} itemAR={showcase}/>
+                <Counter stock="4" noStock="0" itemAR={showcase}/>
 
             </div> 
             

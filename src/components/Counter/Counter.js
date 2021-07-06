@@ -1,8 +1,9 @@
 import './Counter.css'
-import React, {useState,useEffect} from 'react'
+import React, {useState,useContext} from 'react'
 import ReactDOM from 'react-dom'
 import {ShowMessage} from './ShowMessage'
-import { useHistory } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
+import {CartContext} from '../Cart/CartContext'
 
 const SUPERBOTON = {
 
@@ -61,29 +62,52 @@ const carritouD = {
 
 
 
-export function Counter({stock,noStock,Buy,TrueBuy,itemAR}) {
+export function Counter({stock,noStock,itemAR}) {
 
-    let TheClass = 'carritou'
+    /* contador */
 
-    function DoneDidIt(data) { 
+    const  [count,setCount] = useState (0);
+    const [Intern,setIntern] = useState(0);
+    const [ClassChange,setClassChange] = useState(true);
+    const [Bought,setBought] = useState(0);
+
+    const [Con,setCon] = useContext(CartContext)
+    
+    const history = useHistory();  
+
+    function Buy(data) {
+
+        if (data>0) {
+                alert("you added "+data+" unit/s to your cart")
+        }
+
+        console.log(data)
+
+        setCon([...Con,{'name':itemAR.name,'price':itemAR.price,'id':itemAR.id,'count':data}])        
+              
+    }
+
+    function TrueBuy() {
+
+        history.push('../cart')
+
+        console.log(Con)
+
+    }
+
+    function ConfirmBuy(data) { 
         Buy(data)
         setIntern(data)
         setClassChange(false)
 
     }
 
-    function DoneDidNot(data) {
+    function CancelBuy(data) {
         setIntern(data)
         setCount(data)
         setClassChange(true)
         
     }  
-
-    /* contador */
-
-    const  [count,setCount] = useState (0);
-    const [Intern,setIntern] = useState(0);
-    const [ClassChange,setClassChange] = useState(true)
 
     const prus = () => {
     
@@ -110,12 +134,12 @@ export function Counter({stock,noStock,Buy,TrueBuy,itemAR}) {
                 <ShowMessage count={count}/>
             </div>
 
-            <button style={carritou3} disabled={Intern>0?false:true} onClick={() => DoneDidNot(0)}>Cancelar</button>
+            <button style={carritou3} disabled={Intern>0?false:true} onClick={() => CancelBuy(0)}>Cancelar</button>
             <button style={carritou2} disabled={Intern>0?false:true} onClick={() => TrueBuy(itemAR)}>Terminar Compra</button>
             
             <div style={ClassChange?null:carritouD}>
             
-            <button className={'carritou'} disabled={count<1?true:false} onClick={() => DoneDidIt(count)}>Agregar al carrito</button>
+            <button className={'carritou'} disabled={count<1?true:false} onClick={() => ConfirmBuy(count)}>Agregar al carrito</button>
             <button disabled={count>3?true:false} style={SUPERBOTON} onClick={prus}> + </button>
             <button disabled={count<1?true:false} style={SUPERBOTON} onClick={minus}> - </button>
             

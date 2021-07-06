@@ -36,34 +36,6 @@ const nams = {
 }
 
 export const Detailer =({Show,w}) => {
-
-    const [Bought,setBought] = useState(0);
-    const [Con,setCon] = useContext(CartContext)
-
-    const moveit = useHistory();
-
-    function Buy(data) {
-
-        setBought(data)
-
-            if (data>0) {
-                alert("you added "+data+" unit/s to your cart")
-            }
-
-        console.log(data)
-              
-    }
-
-    function TrueBuy(data) {
-
-        setCon([...Con,data])
-
-        console.log(Con)
-
-        moveit.push('../cart')     
-
-    }
-
     
 
     return (
@@ -79,7 +51,7 @@ export const Detailer =({Show,w}) => {
            </div>
 
            <div style={GenerBuy}>
-                    <Counter stock="4" noStock="0" Buy={Buy} TrueBuy={TrueBuy} itemAR={Show}/>
+                    <Counter stock="4" noStock="0" itemAR={Show}/>
 
                     
             </div> 

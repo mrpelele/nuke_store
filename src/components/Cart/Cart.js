@@ -1,13 +1,12 @@
 import React, {useState,useEffect,useContext} from 'react'
 import {CartContext } from '../Cart/CartContext'
-import {Carting} from './Carting'
 
 
 export const CartDisplay = () =>{
 
-    const [Con,setCon] = useContext(CartContext)
+    const [CartItem,setCartItem] = useContext(CartContext)
 
-    console.log(Con)
+    console.log(CartItem)
 
     return(
         
@@ -21,13 +20,20 @@ export const CartDisplay = () =>{
 
             <div>
 
-                {Con.map((Con,w) => {
-                    <div>
-                        <Carting Con={Con} w={w}/>
-                        <button></button>
-                    </div>
-                }
-                )}
+                {CartItem.map((data,w)=>
+                
+                    <section>
+
+                        <div>
+
+                            <h2 key={w}>{data.count} {data.name}</h2>
+                
+                        </div>
+
+                    </section>
+            
+                )};
+                
 
             </div>
 
