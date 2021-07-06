@@ -13,7 +13,7 @@ export const CartProvider = ({children}) => {
         const CheckItemPresence = CartItem.find(data => data.id === CartItem.id)            
     
         if (CheckItemPresence) {
-            const NewObject = (UpdateObject.filter(data => data.id !==Con.id))
+            const NewObject = (Con.filter(data => data.id !==Con.id))
             const NewObjectUpdated = {
                 'name':Con.name,
                 'price':Con.price,
