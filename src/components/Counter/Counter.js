@@ -66,12 +66,11 @@ export function Counter({stock,noStock,itemAR}) {
 
     /* contador */
 
-    const  [count,setCount] = useState (0);
+    const [count,setCount] = useState (0);
     const [Intern,setIntern] = useState(0);
     const [ClassChange,setClassChange] = useState(true);
-    const [Bought,setBought] = useState(0);
 
-    const [Con,setCon] = useContext(CartContext)
+    const {UpdateObject} = useContext(CartContext)
     
     const history = useHistory();  
 
@@ -83,15 +82,13 @@ export function Counter({stock,noStock,itemAR}) {
 
         console.log(data)
 
-        setCon([...Con,{'name':itemAR.name,'price':itemAR.price,'id':itemAR.id,'count':data}])        
+        UpdateObject(itemAR,data)      
               
     }
 
     function TrueBuy() {
 
         history.push('../cart')
-
-        console.log(Con)
 
     }
 

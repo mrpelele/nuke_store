@@ -8,6 +8,7 @@ import {CartProvider} from './components/Cart/CartContext'
 import {CartDisplay} from './components/Cart/Cart'
 
 
+
 function App() {
   return (
     <CartProvider>
@@ -31,9 +32,10 @@ function App() {
 
             <Route path="/cart">
               <CartDisplay/>
-            </Route>  
+            </Route>
 
           </Switch>
+
 
       </BrowserRouter>
     </CartProvider>

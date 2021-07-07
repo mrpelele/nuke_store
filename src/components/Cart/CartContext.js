@@ -1,47 +1,56 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState} from 'react'
 
 
 export const CartContext = React.createContext([]) 
 
 export const CartProvider = ({children}) => {
     /*con es de context*/
-    const [Con,setCon] = useState([])
     const [CartItem,setCartItem] = useState([])
+    console.log("CART ITEM",CartItem)
 
-    const UpdateObject = () => {    
+    function UpdateObject(Product,data) {    
 
-        const CheckItemPresence = CartItem.find(data => data.id === CartItem.id)            
+        console.log("PRODUCTO",Product)
+        console.log("CANTIDAD",data)
+
+        const CheckItemPresence = CartItem.find(element => element.id === Product.id)            
     
         if (CheckItemPresence) {
-            const NewObject = (Con.filter(data => data.id !==Con.id))
-            const NewObjectUpdated = {
-                'name':Con.name,
-                'price':Con.price,
-                'id':Con.id,
-                'count':[...CartItem.Count+Con.Count]
+
+            const NewItems = CartItem.filter(element => element.id !== Product.id)
+
+            const ItemUpdate = {
+                
+                'id':Product.id,
+                'name':Product.name,
+                'count':CheckItemPresence.count+data,
+                'price':Product.price
+
             }
+      
+            setCartItem([...NewItems,ItemUpdate])
 
-            console.log(NewObject)
-            console.log(NewObjectUpdated,"hizo el if con ID")
-
-            setCartItem(...NewObject,NewObjectUpdated)
+            console.log("if")
+           
         } else {
 
-            console.log(Con,"esta haciendo el else Xd")
-            setCartItem(Con)
+            const NewItem = {
+
+                'id':Product.id,
+                'name':Product.name,
+                'count':data,
+                'price':Product.price
+
+            }
+            console.log("else")
+
+            console.log(Product)
+            setCartItem([...CartItem,NewItem])
 
         }
-    }
+    }   
 
-        useEffect (()=>{
-
-        UpdateObject(Con);
-    
-        },[Con])
-
-        
-
-    return <CartContext.Provider value={[Con, setCon,CartItem,setCartItem]}>
+    return <CartContext.Provider value={{CartItem,setCartItem,UpdateObject}}>
         {children}
     </CartContext.Provider>
 }

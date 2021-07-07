@@ -4,9 +4,10 @@ import {CartContext } from '../Cart/CartContext'
 
 export const CartDisplay = () =>{
 
-    const [CartItem,setCartItem] = useContext(CartContext)
+    const {CartItem,setCartItem} = useContext(CartContext)
 
     console.log(CartItem)
+    
 
     return(
         
@@ -22,6 +23,7 @@ export const CartDisplay = () =>{
 
                 {CartItem.map((data,w)=>
                 
+                
                     <section>
 
                         <div>
@@ -32,13 +34,15 @@ export const CartDisplay = () =>{
 
                     </section>
             
-                )};
+                )}
                 
 
             </div>
 
         </section>
+        
 )       
+
 }
 
 
