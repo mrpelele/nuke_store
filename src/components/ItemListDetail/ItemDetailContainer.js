@@ -10,7 +10,7 @@ export const DetailLister = () => {
 
     const fetchItems = () => {
 
-        fetch('https://mocki.io/v1/ada50e51-a250-4807-be53-04b35f74ab24')
+        fetch('https://mocki.io/v1/64df0178-42e5-4b9f-a73b-b89b94863bb8')
             .then(dataReceive => dataReceive.json()) 
             .then(data => setShow(data.filter((generic) => generic.id == id)))
             
