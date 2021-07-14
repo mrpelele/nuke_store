@@ -1,25 +1,36 @@
 import React, {useState,useEffect,useContext} from 'react'
 import {useParams} from 'react-router-dom'
 import {Detailer} from './ItemDetail'
-import {CartContext } from '../Cart/CartContext'
+import {dataBase} from '../../FireBase/firebase.js'
 
 export const DetailLister = () => { 
 
     const [Show, setShow] = useState ([])
+    const [loading, setLoading] = useState ([])
+    
     const {id} = useParams();
-
-    const fetchItems = () => {
-
-        fetch('https://mocki.io/v1/64df0178-42e5-4b9f-a73b-b89b94863bb8')
-            .then(dataReceive => dataReceive.json()) 
-            .then(data => setShow(data.filter((generic) => generic.id == id)))
-            
-       
-    }
         
     useEffect (()=>{
 
-        fetchItems()
+        setLoading(true);
+        const ItemCollection = dataBase.collection("item")
+        ItemCollection.get().then((ItemQuery)=> {
+            if (ItemQuery.size === 0) {
+                console.log('empty database')
+            }
+
+            if (id==undefined) {
+                console.log('unable to select the item');
+            } else { 
+                const idFilter = ItemQuery.docs.map(doc => doc.data())
+                setShow(idFilter.filter((element) => element.id == id))
+                console.log(idFilter)
+            }
+            }).catch((error)=>{
+                console.log('error, no items found',error);
+            }).finally(()=>{
+                setLoading(false);
+            });
         
 
     },[])
