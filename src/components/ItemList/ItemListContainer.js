@@ -18,13 +18,17 @@ const aj = {
         
 };
 
+
+
 export const ItemLister = () => {
+
+    
 
     const [show, setShow] = useState ([])
     const [loading, setLoading] =useState (true)
     const {ranges} = useParams();
-       
-    useEffect (()=>{
+
+    function callItems() {
 
         setLoading(true);
         const ItemCollection = dataBase.collection("item")
@@ -45,8 +49,14 @@ export const ItemLister = () => {
             }).finally(()=>{
                 setLoading(false);
             });
+        
+    }
+       
+    useEffect (()=>{
+
+        callItems()
             
-        },[show])
+        },[ranges])
 
     return (
     

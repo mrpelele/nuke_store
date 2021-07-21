@@ -1,6 +1,7 @@
-import React, {useState,useContext} from 'react'
+import React, {useState,useContext,useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import {CartContext } from '../Cart/CartContext'
+import {dataBase} from '../../FireBase/firebase'
 
 const NoDisplay = {
     display:"none"
@@ -17,12 +18,14 @@ const ButtonStyle = {
     fontSize: "2rem",
     textAlign: "center",
     textDecoration: "none",
-    width: "6rem",
+    width: "10rem",
     border: "1px solid"
 
 };
 
 const nothing = {
+
+    
 
 }
 
@@ -33,11 +36,33 @@ const ItemDisplay = {
 
 }
 
+const PlaceOrderColumn = {
+
+    display:"flex",
+    flexDirection:"column",
+    width:"10rem"
+
+}
+
+
+
 export const CartDisplay = () =>{
+
+debugger
 
     const {CartItem,setCartItem,DeleteAllItems,DeleteSpecificItem,Price} = useContext(CartContext)
 
     const history = useHistory();
+
+    const [orderID,setOrderID] = useState("")
+    const [loading, setLoading] = useState(false)
+    const [orderSent,setOrderSent] = useState(false)
+    const [userData,setUserData] = useState(
+        {            
+        userName:"",
+        email:""
+        }
+    )
 
     console.log(Price)
 
@@ -46,11 +71,38 @@ export const CartDisplay = () =>{
         history.push('../')
 
     }
-  
+
+    function setLoadingTrue() {
+
+        setLoading(true)
+
+    }
+
+    function addOrder() {
+
+        const firebaseOrders  = dataBase.collection('orders');
+        const newOrder = {
+        userData:userData,
+        items: CartItem,
+        totalCost:Price
+        };
+
+        firebaseOrders.add(newOrder).then(({id}) => {
+            setOrderID(id); 
+        }).catch(err => {
+            console.log(err);
+        }).finally(() => {
+            setOrderSent(true)
+            setLoading(false);
+        });
+    
+    };
+
+    console.log(userData)
 
     return(
         
-        <section>
+        <section style={orderSent?NoDisplay:nothing}>
 
             <h1>
 
@@ -81,15 +133,31 @@ export const CartDisplay = () =>{
 
             <div>
 
-                    <p style={CartItem.length>0?nothing:NoDisplay}>total cost:{Price}</p>
+                    <p style={loading?nothing:NoDisplay}>total cost:{Price}</p>
 
             </div>
 
             <div >
 
-                    <button style={CartItem.length>0?ButtonStyle:NoDisplay} onClick={() => DeleteAllItems()}>Delete cart</button>
-                    <button style={CartItem.length>0?NoDisplay:ButtonStyle} onClick={() => SendToLanding()}>Go back to main</button>
+                    <button style={CartItem.length>0?(loading?NoDisplay:ButtonStyle):NoDisplay} onClick={() => DeleteAllItems()}>Delete cart</button>
+                    <button style={CartItem.length>0?(loading?NoDisplay:ButtonStyle):NoDisplay} onClick={() => SendToLanding()}>continue shopping</button>
+                    <button style={CartItem.length>0?(loading?NoDisplay:ButtonStyle):NoDisplay} onClick={() => setLoadingTrue()}>confirm cart</button>
                     
+                    
+            </div>
+
+            <div style={loading?nothing:NoDisplay}>
+
+                <form >
+
+                    <div style={PlaceOrderColumn}>
+                        <input type="text" name="userName" placeholder="name" onChange={(data) => setUserData({...userData,[data.target.name]:data.target.value})}/>
+                        <input type="email" name="email" placeholder="email" onChange={(data) => setUserData({...userData,[data.target.name]:data.target.value})}/>
+                    </div>
+
+                    <input type="submit" value="place order" style={ButtonStyle}  onClick={() => addOrder()}/>
+
+                </form>
 
             </div>
 

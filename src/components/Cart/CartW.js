@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {CartContext} from '../Cart/CartContext'
+import {Link} from 'react-router-dom'
 import './CartW.css'
 
 
@@ -31,7 +32,7 @@ export const CartW = () => {
     
         <div >
 
-            <a href='../cart' ><img src={CARTING} alt="cart" id="cartST"></img></a>
+            <Link to='../cart' ><img src={CARTING} alt="cart" id="cartST"></img></Link>
             <p style={CartCount>0?ButtonStyle:NoDisplay}>{CartCount}</p>
 
         </div>
