@@ -2,6 +2,8 @@ import React, {useState,useContext,useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import {CartContext } from '../Cart/CartContext'
 import {dataBase} from '../../FireBase/firebase'
+import './cart.css'
+
 
 const NoDisplay = {
     display:"none"
@@ -44,11 +46,14 @@ const PlaceOrderColumn = {
 
 }
 
+const cartStyle = {
+
+    display:'flex',
+}
+
 
 
 export const CartDisplay = () =>{
-
-debugger
 
     const {CartItem,setCartItem,DeleteAllItems,DeleteSpecificItem,Price} = useContext(CartContext)
 
@@ -78,9 +83,12 @@ debugger
 
     }
 
-    function addOrder() {
+    async function addOrder(e) {
 
-        const firebaseOrders  = dataBase.collection('orders');
+        e.preventDefault();
+ 
+
+        const firebaseOrders  = await dataBase.collection('orders');
         const newOrder = {
         userData:userData,
         items: CartItem,
@@ -94,75 +102,96 @@ debugger
         }).finally(() => {
             setOrderSent(true)
             setLoading(false);
+            DeleteAllItems();
         });
     
     };
 
     console.log(userData)
 
-    return(
+    return (
         
-        <section style={orderSent?NoDisplay:nothing}>
+        <section style={cartStyle}>
+        
+            <div style={orderSent?NoDisplay:nothing}>
 
-            <h1>
+                <section>
 
-                Items in cart
+                        <h1>
 
-            </h1>
+                            Items in cart
 
-            <div>
+                        </h1>
 
-                {CartItem.map((data,w)=>
-                 
-                
-                    <section>
+                        <div>
 
-                        <div style={ItemDisplay}>
+                            {CartItem.map((data,w)=>
 
-                            <h2 key={w}>{data.count} {data.name}</h2>
-                            <button onClick={() => DeleteSpecificItem(data.id,data.price,data.count)}>remove this item</button>
-                
+
+                                <section>
+
+                                    <div style={ItemDisplay}>
+
+                                        <h2 key={w}>{data.count} {data.name}</h2>
+                                        <button onClick={() => DeleteSpecificItem(data.id,data.price,data.count)}>remove this item</button>
+
+                                    </div>
+
+                                </section>
+
+                            )}
+
+
                         </div>
 
-                    </section>
-            
-                )}
-                
+                </section>
 
-            </div>
+               <section>
 
-            <div>
+                    <div>
 
-                    <p style={loading?nothing:NoDisplay}>total cost:{Price}</p>
+                        <p style={loading?nothing:NoDisplay}>total cost:{Price}</p>
 
-            </div>
-
-            <div >
-
-                    <button style={CartItem.length>0?(loading?NoDisplay:ButtonStyle):NoDisplay} onClick={() => DeleteAllItems()}>Delete cart</button>
-                    <button style={CartItem.length>0?(loading?NoDisplay:ButtonStyle):NoDisplay} onClick={() => SendToLanding()}>continue shopping</button>
-                    <button style={CartItem.length>0?(loading?NoDisplay:ButtonStyle):NoDisplay} onClick={() => setLoadingTrue()}>confirm cart</button>
-                    
-                    
-            </div>
-
-            <div style={loading?nothing:NoDisplay}>
-
-                <form >
-
-                    <div style={PlaceOrderColumn}>
-                        <input type="text" name="userName" placeholder="name" onChange={(data) => setUserData({...userData,[data.target.name]:data.target.value})}/>
-                        <input type="email" name="email" placeholder="email" onChange={(data) => setUserData({...userData,[data.target.name]:data.target.value})}/>
                     </div>
 
-                    <input type="submit" value="place order" style={ButtonStyle}  onClick={() => addOrder()}/>
+                    <div>
 
-                </form>
+                        <button style={CartItem.length>0?(loading?NoDisplay:ButtonStyle):NoDisplay} onClick={() => DeleteAllItems()}>Delete cart</button>
+                        <button style={CartItem.length>0?(loading?NoDisplay:ButtonStyle):NoDisplay} onClick={() => SendToLanding()}>continue shopping</button>
+                        <button style={CartItem.length>0?(loading?NoDisplay:ButtonStyle):NoDisplay} onClick={() => setLoadingTrue()}>confirm cart</button>
+
+
+                    </div>
+
+                    <div style={loading?nothing:NoDisplay}>
+
+                        <form onSubmit={addOrder}>
+
+                            <div style={PlaceOrderColumn}>
+                                <input type="text" name="userName" placeholder="name" onChange={(data) => setUserData({...userData,[data.target.name]:data.target.value})}/>
+                                <input type="email" name="email" placeholder="email" onChange={(data) => setUserData({...userData,[data.target.name]:data.target.value})}/>
+                            </div>
+
+                            <input type="submit" value="place order" style={ButtonStyle}/>
+
+                        </form>
+
+                    </div>
+
+               </section>
 
             </div>
 
+
+            <section style={orderSent?nothing:NoDisplay}>
+
+                    <h1>Thank you for your purchase!</h1>
+
+                    <p>your order ID is: {orderID}</p>
+
+            </section>
+
         </section>
-        
 )       
 
 }

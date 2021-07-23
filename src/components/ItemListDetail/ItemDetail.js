@@ -51,7 +51,7 @@ export const Detailer =({Show,w}) => {
            </div>
 
            <div style={GenerBuy}>
-                    <Counter stock="4" noStock="0" itemAR={Show}/>
+                    <Counter stock={Show.stock} noStock="0" itemAR={Show}/>
 
                     
             </div> 

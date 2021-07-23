@@ -6,6 +6,8 @@ import {DetailLister} from './components/ItemListDetail/ItemDetailContainer'
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
 import {CartProvider} from './components/Cart/CartContext'
 import {CartDisplay} from './components/Cart/Cart'
+import {Footer} from './components/Footer/Footer'
+
 
 
 
@@ -36,6 +38,7 @@ function App() {
 
           </Switch>
 
+        <Footer/>
 
       </BrowserRouter>
     </CartProvider>

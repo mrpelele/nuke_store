@@ -127,7 +127,7 @@ export function Counter({stock,noStock,itemAR}) {
 
         <div >
 
-            <div className="XD">
+            <div className="classStyle1">
                 <ShowMessage count={count}/>
             </div>
 
@@ -137,7 +137,7 @@ export function Counter({stock,noStock,itemAR}) {
             <div style={ClassChange?null:carritouD}>
             
             <button className={'carritou'} disabled={count<1?true:false} onClick={() => ConfirmBuy(count)}>Agregar al carrito</button>
-            <button disabled={count>3?true:false} style={SUPERBOTON} onClick={prus}> + </button>
+            <button disabled={count>stock?true:false} style={SUPERBOTON} onClick={prus}> + </button>
             <button disabled={count<1?true:false} style={SUPERBOTON} onClick={minus}> - </button>
             
             </div>

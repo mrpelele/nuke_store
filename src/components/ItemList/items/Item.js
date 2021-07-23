@@ -42,7 +42,7 @@ return (
 
             <div id='GenerBuy'>
 
-                <Counter stock="4" noStock="0" itemAR={showcase}/>
+                <Counter stock={showcase.stock} noStock="0" itemAR={showcase}/>
 
             </div> 
             
