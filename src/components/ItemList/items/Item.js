@@ -28,9 +28,6 @@ const imgQ = {
 
 export const Item = ({showcase,w}) => {
 
-   
-    
-
 return (  
 
 <div style={container}>

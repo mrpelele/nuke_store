@@ -3,5 +3,70 @@
     position: relative;
     min-height: 100vh;
   
-  }
+}
+
+.ItemTitle {
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-size: 4rem;
+  margin: 5rem;
+
+}
+
+.ItemDisplay {
+
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+
+}
+
+.ItemDisplay--content {
+
+  margin: 2rem; 
+  align-self: center;
+
+}
+
+.CartOptionSelect {
+
+  display: flex;
+  flex-direction: row;
+  margin: 2rem; 
+
+}
+
+.formDisplay {
+
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+
+}
+
+.mapContainerStyler {
+
+  border: 1px;
+  border-style: solid;
+
+}
+
+.postItemSendMessageStyle {
+
+  font-size: 5rem;
+
+}
+
+.postItemSendMessageStyle2 {
+
+  font-size: 3.5rem;
+
+}
+
+
+
+
+
 

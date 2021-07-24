@@ -13,7 +13,7 @@ const ButtonStyle = {
 
     display: "flex",
     flexDirection:"column",
-    alignItems: "center",
+    alignContent: "center",
     border: "none",
     backgroundColor: "white",
     color: "black",
@@ -25,16 +25,26 @@ const ButtonStyle = {
 
 };
 
-const nothing = {
-
-    
-
-}
-
-const ItemDisplay = {
+const ButtonStyle2 = {
 
     display: "flex",
-    flexDirection:"row"
+    flexDirection:"column",
+    alignContent: "center",
+    border: "none",
+    backgroundColor: "white",
+    color: "black",
+    fontSize: "2rem",
+    textAlign: "center",
+    textDecoration: "none",
+    width: "11rem",
+    border: "1px solid"
+
+};
+
+
+const nothing = {
+
+    justifyContent:'center'
 
 }
 
@@ -42,13 +52,15 @@ const PlaceOrderColumn = {
 
     display:"flex",
     flexDirection:"column",
-    width:"10rem"
+    width:"15rem",
+    height:"1.5rem"
 
 }
 
 const cartStyle = {
 
     display:'flex',
+    justifyContent:'center'
 }
 
 
@@ -69,8 +81,6 @@ export const CartDisplay = () =>{
         }
     )
 
-    console.log(Price)
-
     function SendToLanding() {
 
         history.push('../')
@@ -86,7 +96,6 @@ export const CartDisplay = () =>{
     async function addOrder(e) {
 
         e.preventDefault();
- 
 
         const firebaseOrders  = await dataBase.collection('orders');
         const newOrder = {
@@ -117,23 +126,23 @@ export const CartDisplay = () =>{
 
                 <section>
 
-                        <h1>
+                        <title className={'ItemTitle'}>
 
                             Items in cart
 
-                        </h1>
+                        </title>
 
                         <div>
 
                             {CartItem.map((data,w)=>
 
 
-                                <section>
+                                <section className={'mapContainerStyler'} >
 
-                                    <div style={ItemDisplay}>
+                                    <div className={'ItemDisplay'}>
 
-                                        <h2 key={w}>{data.count} {data.name}</h2>
-                                        <button onClick={() => DeleteSpecificItem(data.id,data.price,data.count)}>remove this item</button>
+                                        <h2 className={'ItemDisplay--content'} key={w}>{data.count} {data.name}</h2>
+                                        <button className={'ItemDisplay--content'} style={ButtonStyle} onClick={() => DeleteSpecificItem(data.id,data.price,data.count)}>remove this item</button>
 
                                     </div>
 
@@ -148,13 +157,13 @@ export const CartDisplay = () =>{
 
                <section>
 
-                    <div>
+                    <div style={{fontSize:'2rem',marginLeft:'1rem'}}>
 
                         <p style={loading?nothing:NoDisplay}>total cost:{Price}</p>
 
                     </div>
 
-                    <div>
+                    <div className={'CartOptionSelect'}>
 
                         <button style={CartItem.length>0?(loading?NoDisplay:ButtonStyle):NoDisplay} onClick={() => DeleteAllItems()}>Delete cart</button>
                         <button style={CartItem.length>0?(loading?NoDisplay:ButtonStyle):NoDisplay} onClick={() => SendToLanding()}>continue shopping</button>
@@ -165,14 +174,14 @@ export const CartDisplay = () =>{
 
                     <div style={loading?nothing:NoDisplay}>
 
-                        <form onSubmit={addOrder}>
+                        <form className={'formDisplay'} onSubmit={addOrder}>
 
-                            <div style={PlaceOrderColumn}>
-                                <input type="text" name="userName" placeholder="name" onChange={(data) => setUserData({...userData,[data.target.name]:data.target.value})}/>
-                                <input type="email" name="email" placeholder="email" onChange={(data) => setUserData({...userData,[data.target.name]:data.target.value})}/>
+                            <div style={{paddingRight:'1rem'}}>
+                                <input style={PlaceOrderColumn} type="text" name="userName" placeholder="name" onChange={(data) => setUserData({...userData,[data.target.name]:data.target.value})}/>
+                                <input style={PlaceOrderColumn} type="email" name="email" placeholder="email" onChange={(data) => setUserData({...userData,[data.target.name]:data.target.value})}/>
                             </div>
 
-                            <input type="submit" value="place order" style={ButtonStyle}/>
+                            <input type="submit" value="place order" style={ButtonStyle2}/>
 
                         </form>
 
@@ -182,18 +191,16 @@ export const CartDisplay = () =>{
 
             </div>
 
-
             <section style={orderSent?nothing:NoDisplay}>
 
-                    <h1>Thank you for your purchase!</h1>
+                    <h1 className={'postItemSendMessageStyle'}>Thank you for your purchase!</h1>
 
-                    <p>your order ID is: {orderID}</p>
+                    <p className={'postItemSendMessageStyle2'}>your order ID is: {orderID}</p>
 
             </section>
 
         </section>
 )       
-
 }
 
 

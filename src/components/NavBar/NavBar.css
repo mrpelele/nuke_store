@@ -5,37 +5,39 @@
     width: 100%;
     background-color: rgb(150, 66, 66);
     align-items: center;
+    justify-content: space-around;
   
 }
   
 #nabarLogo {
   
+  position: relative;
   display: flex;
-  font-size: 40px;
+  height: 80%;
+  left: -5%;
   
 }
   
 #nabarLink {
   
   position: relative;
-  left: 5rem;
-  width: 80rem;
-  height: 2rem;
+  width: 60rem;
   display: flex;
   align-self: flex-end;
   justify-content: space-around;
-  font: 1rem;
+  font-size: 2rem;
+  left: -5%;
   
 }
 
-.IMFALLING {
+.dropdownMenu {
 
   position: relative;
   display: inline-block;
 
 }
 
-.IFELL {
+.dropdownMenu-Content {
 
   display: none;
   position: absolute;
@@ -52,7 +54,7 @@
 
 }
 
-.IMFALLING:hover .IFELL {
+.dropdownMenu:hover .dropdownMenu-Content {
 
   display: block;
 

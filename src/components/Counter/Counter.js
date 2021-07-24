@@ -60,11 +60,9 @@ const carritouD = {
 
 };
 
-
-
 export function Counter({stock,noStock,itemAR}) {
 
-    /* contador */
+    /* counter */
 
     const [count,setCount] = useState (0);
     const [Intern,setIntern] = useState(0);
@@ -79,8 +77,6 @@ export function Counter({stock,noStock,itemAR}) {
         if (data>0) {
                 alert("you added "+data+" unit/s to your cart")
         }
-
-        console.log(data)
 
         UpdateObject(itemAR,data)      
               
@@ -120,8 +116,6 @@ export function Counter({stock,noStock,itemAR}) {
             setCount(count-1);
         } else {}
     }
-
-    /* return */
 
     return (
 

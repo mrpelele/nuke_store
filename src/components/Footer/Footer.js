@@ -3,7 +3,7 @@ import React from 'react'
 
 const footStyle = {
 
-    position:'relative',
+    position:'absolute',
     display: 'flex',
     height: '4rem',
     width: '100%',
@@ -11,8 +11,8 @@ const footStyle = {
     justifyContent:'center',
     color:'white',
     left:'0',
-    bottom:'0',
-    right:'0' 
+    bottom:'-4rem',
+    right:'0'
 }
 
 export const Footer = () => {

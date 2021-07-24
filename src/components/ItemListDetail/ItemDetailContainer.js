@@ -16,15 +16,13 @@ export const DetailLister = () => {
         const ItemCollection = dataBase.collection("item")
         ItemCollection.get().then((ItemQuery)=> {
             if (ItemQuery.size === 0) {
-                console.log('empty database')
+                console.log('the selected database is currently empty')
             }
-
             if (id==undefined) {
                 console.log('unable to select the item');
             } else { 
                 const idFilter = ItemQuery.docs.map(doc => doc.data())
                 setShow(idFilter.filter((element) => element.id == id))
-                console.log(idFilter)
             }
             }).catch((error)=>{
                 console.log('error, no items found',error);
@@ -32,7 +30,6 @@ export const DetailLister = () => {
                 setLoading(false);
             });
         
-
     },[])
 
     return (

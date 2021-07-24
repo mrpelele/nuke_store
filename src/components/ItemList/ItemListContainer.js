@@ -58,8 +58,6 @@ export const ItemLister = () => {
             
         },[ranges])
 
-        console.log(show,"aaaaaaaaaaaaaaaaaaaaaaaaaaaa pija")
-
     return (
     
         <section className="Gener">
