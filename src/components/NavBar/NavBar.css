@@ -17,6 +17,13 @@
   left: -5%;
   
 }
+
+.linkStyle {
+
+  text-decoration: none;
+  color: black
+
+}
   
 #nabarLink {
   
@@ -27,6 +34,7 @@
   justify-content: space-around;
   font-size: 2rem;
   left: -5%;
+  text-decoration: none;
   
 }
 

@@ -7,8 +7,8 @@ import {BrowserRouter,Switch,Route} from 'react-router-dom'
 import {CartProvider} from './components/Cart/CartContext'
 import {CartDisplay} from './components/Cart/Cart'
 import {Footer} from './components/Footer/Footer'
-
-
+import {ContactPage} from './components/Contact/contact'
+import {CheckOrder} from './components/CheckOrder/CheckOrder'
 
 
 function App() {
@@ -34,6 +34,14 @@ function App() {
 
             <Route path="/cart">
               <CartDisplay/>
+            </Route>
+
+            <Route path="/contact">
+              <ContactPage/>
+            </Route>
+
+            <Route path="/check">
+              <CheckOrder/>
             </Route>
 
           </Switch>

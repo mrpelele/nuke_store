@@ -19,7 +19,7 @@ export const NavBar = () => {
 
                 <div className="dropdownMenu">
 
-                    <a href="">filter</a>
+                    <a className={'linkStyle'} href="">filter</a>
 
                     <ul className="dropdownMenu-Content">
                         <li>RANGE</li>
@@ -30,8 +30,9 @@ export const NavBar = () => {
 
                 </div>
               
-                <a href="">popular</a>
-                <a href="">contact</a>
+                <Link className={'linkStyle'} to='../check' >Check Order</Link>
+                
+                <Link className={'linkStyle'} to='../contact' >Contact</Link>
 
             </div>
 

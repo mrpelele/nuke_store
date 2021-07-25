@@ -36,7 +36,6 @@ export const ItemLister = () => {
             if (ItemQuery.size === 0) {
                 console.log('empty database')
             }
-
             if (ranges==undefined) {
                 setShow(ItemQuery.docs.map(doc => doc.data()));
             } else { 
