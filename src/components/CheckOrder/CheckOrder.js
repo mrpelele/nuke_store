@@ -1,12 +1,13 @@
-import React, {useState,useEffect,useContext} from 'react'
+import React, {useState,useEffect} from 'react'
 import {dataBase} from '../../FireBase/firebase'
+import './CheckOrder.css'
 
 export const CheckOrder = () => {
 
-    const [loading, setLoading] = useState ([])
+    const [loading, setLoading] = useState (false)
     const [items, setItems] = useState ([])
-    const [prepareID, setPrepareID] = useState ("")
-    const [ID, setID] = useState ("")
+    const [prepareID, setPrepareID] = useState ('')
+    const [ID, setID] = useState ('')
 
     function sendID() {
 
@@ -20,14 +21,16 @@ export const CheckOrder = () => {
         const ItemCollection = dataBase.collection("orders")
         ItemCollection.get().then((ItemCall)=> {
             if (ItemCall.size === 0) {
-                console.log('the selected database is currently empty')
+                return(console.log('the selected database is currently empty'))
             }
             if (ID==undefined) {
-                console.log('item nof found');
-            } else { 
-                const SearchByID = ItemCall.docs.map(doc => doc.data())
-                setItems(SearchByID.filter((element) => element.id == ID))
+               return( console.log('item nof found'))
             }
+                
+            const SearchByID = ItemCall.docs.map(doc => doc.data())
+            setItems(SearchByID.filter((element) => element.id == ID))
+            console.log('el item holaaa????')
+            
             }).catch((error)=>{
                 console.log('error, no items found',error);
             }).finally(()=>{
@@ -51,20 +54,20 @@ export const CheckOrder = () => {
 
     return (
 
-        <section>
+        <section className={'sectionStyle'}>
 
-            <form onSubmit={sendID}>
+            <form className={'formStyle'} onSubmit={sendID}>
 
                 <div>
 
-                        <input  type="text" name="prepareID" placeholder="ID" onChange={(data) => setPrepareID({[data.target.name]:data.target.value})}/>
+                        <input className={'inputStyle'} type="text" name="prepareID" placeholder="ID" onChange={(data) => setPrepareID({[data.target.name]:data.target.value})}/>
                         
                 </div>
 
-                        <input type="submit" value="search item"/>
+                        <input className={'inputButtonStyle'} type="submit" value="search item"/>
             </form>
 
-            <p>{items}aca tiene que aparecer algo?</p>
+            <p>{items}this was supposed to display the item if found ¯\_(ツ)_/¯</p>
 
             {items.map((data,w)=>
 

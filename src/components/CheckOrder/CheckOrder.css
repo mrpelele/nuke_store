@@ -1,0 +1,39 @@
+.sectionStyle {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30rem;
+    flex-direction: column;
+    margin-top: 10rem;
+}
+
+.formStyle {
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.inputStyle {
+
+    position: relative;
+    display: flex;
+    width: 25rem;
+    height: 2rem;
+    font-size: 2rem;
+
+}
+
+.inputButtonStyle {
+
+    position: relative;
+    display: flex;
+    margin-top: 3px;
+    background-color: rgba(255, 255, 255, 0.842);
+    height: 2rem;
+    font-size: 1.5rem;
+    justify-content: center;
+
+}
