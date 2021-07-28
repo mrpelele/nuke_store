@@ -7,50 +7,38 @@ export const CheckOrder = () => {
     const [loading, setLoading] = useState (false)
     const [items, setItems] = useState ([])
     const [prepareID, setPrepareID] = useState ('')
-    const [ID, setID] = useState ('')
 
-    function sendID() {
-
-        setID(prepareID)
+    async function sendID(e) {
+        
+        e.preventDefault();
+        console.log(prepareID)
+        CallItems()
 
     }
 
-    function CallItems() {
+    async function CallItems() {
 
         setLoading(true);
-        const ItemCollection = dataBase.collection("orders")
-        ItemCollection.get().then((ItemCall)=> {
-            if (ItemCall.size === 0) {
+        const ItemCollection = await dataBase.collection("orders").doc(prepareID).get().then(orderCall =>{
+
+            if (orderCall.size === 0) {
                 return(console.log('the selected database is currently empty'))
             }
-            if (ID==undefined) {
-               return( console.log('item nof found'))
-            }
-                
-            const SearchByID = ItemCall.docs.map(doc => doc.data())
-            setItems(SearchByID.filter((element) => element.id == ID))
-            console.log('el item holaaa????')
-            
-            }).catch((error)=>{
-                console.log('error, no items found',error);
-            }).finally(()=>{
-                setLoading(false);
-            });
 
+            setItems({id: orderCall.id, ...orderCall.data()})
+            console.log(items,'buscando item?')
+
+        }).catch((error)=>{
+                console.log('error, no items found',error);
+        }).finally(()=>{
+                setLoading(false);
+        });
+        
     }
 
-
-
-    
-    useEffect (()=>{
-
-        CallItems()
-        
-    },[ID])
-
     console.log(prepareID)
-    console.log(ID)
-    console.log(items)
+    
+
 
     return (
 
@@ -60,7 +48,7 @@ export const CheckOrder = () => {
 
                 <div>
 
-                        <input className={'inputStyle'} type="text" name="prepareID" placeholder="ID" onChange={(data) => setPrepareID({[data.target.name]:data.target.value})}/>
+                        <input className={'inputStyle'} type="text" name="prepareID" placeholder="ID" onChange={(data) => setPrepareID(data.target.value)}/>
                         
                 </div>
 
@@ -73,11 +61,11 @@ export const CheckOrder = () => {
 
                 <section>
 
-                    <p ket={w}>{data}</p>
+                    <p key={w}>{data}</p>
 
                 </section>
 
-            )}
+            )} 
 
         </section>
 
