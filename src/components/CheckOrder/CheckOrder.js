@@ -8,7 +8,7 @@ export const CheckOrder = () => {
     const [items, setItems] = useState ([])
     const [prepareID, setPrepareID] = useState ('')
 
-    async function sendID(e) {
+    function sendID(e) {
         
         e.preventDefault();
         console.log(prepareID)
