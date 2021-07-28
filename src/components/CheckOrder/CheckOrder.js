@@ -11,7 +11,6 @@ export const CheckOrder = () => {
     function sendID(e) {
         
         e.preventDefault();
-        console.log(prepareID)
         CallItems()
 
     }
@@ -25,8 +24,7 @@ export const CheckOrder = () => {
                 return(console.log('the selected database is currently empty'))
             }
 
-            setItems({id: orderCall.id, ...orderCall.data()})
-            console.log(items,'buscando item?')
+            setItems([{id: orderCall.id, ...orderCall.data()}])
 
         }).catch((error)=>{
                 console.log('error, no items found',error);
@@ -34,11 +32,7 @@ export const CheckOrder = () => {
                 setLoading(false);
         });
         
-    }
-
-    console.log(prepareID)
-    
-
+    }    
 
     return (
 
@@ -55,13 +49,17 @@ export const CheckOrder = () => {
                         <input className={'inputButtonStyle'} type="submit" value="search item"/>
             </form>
 
-            <p>{items}this was supposed to display the item if found ¯\_(ツ)_/¯</p>
-
             {items.map((data,w)=>
 
-                <section>
+                <section key={w}>                   
 
-                    <p key={w}>{data}</p>
+                    {data.items.map((data,w) =>
+                    
+                    <p>{data.name} {data.count}</p>    
+
+                    )}
+
+                <p >total cost:{data.totalCost}</p>
 
                 </section>
 
