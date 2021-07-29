@@ -1,3 +1,10 @@
+body {
+
+    margin: 0;
+    padding: 0;
+
+}
+
 .sectionStyle {
 
     display: flex;
@@ -5,7 +12,14 @@
     align-items: center;
     height: 30rem;
     flex-direction: column;
-    margin-top: 10rem;
+    margin-top: 2rem;
+    height: 100rem;
+}
+
+.noDisplay{
+
+    display: none;
+
 }
 
 .formStyle {
@@ -13,6 +27,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    margin-bottom: 55rem;
 
 }
 
@@ -37,3 +52,59 @@
     justify-content: center;
 
 }
+
+.SectionMapStyle {
+
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 20rem;
+    height: 25rem;
+    font-size: 2rem;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.SectionMapStyleH1 {
+
+    margin: 6rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 50rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+
+}
+
+.SectionMapStyleH2 {
+
+    margin: 4rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 30rem;
+    justify-content: center;
+    align-items: center;
+    font: 3rem;
+
+}
+
+.ButtonStyle {
+
+    display: flex;
+    flex-direction: column;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: black;
+    font-size: 2rem;
+    text-decoration: none;
+    width: 25rem;
+    border: 1px solid;
+
+};

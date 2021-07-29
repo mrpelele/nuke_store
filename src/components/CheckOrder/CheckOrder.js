@@ -7,6 +7,7 @@ export const CheckOrder = () => {
     const [loading, setLoading] = useState (false)
     const [items, setItems] = useState ([])
     const [prepareID, setPrepareID] = useState ('')
+    const [check,setCheck] = useState(false)
 
     function sendID(e) {
         
@@ -30,6 +31,7 @@ export const CheckOrder = () => {
                 console.log('error, no items found',error);
         }).finally(()=>{
                 setLoading(false);
+                setCheck(true)
         });
         
     }    
@@ -38,7 +40,7 @@ export const CheckOrder = () => {
 
         <section className={'sectionStyle'}>
 
-            <form className={'formStyle'} onSubmit={sendID}>
+            <form className={check?'noDisplay':'formStyle'} onSubmit={sendID}>
 
                 <div>
 
@@ -51,15 +53,21 @@ export const CheckOrder = () => {
 
             {items.map((data,w)=>
 
-                <section key={w}>                   
+                <section className={check?'SectionMapStyle':'noDisplay'} key={w}>
+
+                    <h1 className={'SectionMapStyleH1'}>this is your current order</h1>
 
                     {data.items.map((data,w) =>
+
+                        
                     
-                    <p>{data.name} {data.count}</p>    
+                    <p>{data.count} {data.name}</p>    
 
                     )}
 
-                <p >total cost:{data.totalCost}</p>
+                <h2 className={'SectionMapStyleH2'}>for a total of {data.totalCost}$</h2>
+
+                <button className={'ButtonStyle'} onClick={() =>setCheck(false)}>ups, this is noy my order</button>
 
                 </section>
 
