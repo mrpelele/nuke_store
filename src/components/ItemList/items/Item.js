@@ -1,9 +1,6 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import {Counter} from '../../Counter/Counter'
 import {NavLink} from 'react-router-dom'
-import {CartContext } from '../../Cart/CartContext'
-import { useHistory } from 'react-router-dom';
-
 
 const container = {
 

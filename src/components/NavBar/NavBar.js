@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 
 export const NavBar = () => {
 
-    const nukeStoreIMG = 'https://png2.cleanpng.com/sh/c22ba1f39d4f32e217847032b4f39a9b/L0KzQYq3VME0N5RujJH0aYP2gLBuTflwdppBgdDwLYLkdLrolPlwdl57fdV9b4Kwd8PokPhqa6QyitNtaXBkc8XwlvUubJZoReRqZHnycbT7igZmNaR7f595bnewebT2jr1nepZqRdZ4d37vf7LrTcU0O2g4TZ8AY3K1R4q9hsA4OGUASJCANEC4QYmBUME2PWY3SKI8NkezQomBTwBvbz==/kisspng-ionizing-radiation-vector-graphics-radioactive-dec-radioactive-svg-png-icon-free-download-533735-5cb2796f070490.5405188015552003670288.png'
+    const nukeStoreIMG = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Nuclear_symbol.svg/1024px-Nuclear_symbol.svg.png'
 
     return (
     <div>

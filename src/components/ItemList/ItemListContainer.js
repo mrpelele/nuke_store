@@ -25,12 +25,11 @@ export const ItemLister = () => {
     
 
     const [show, setShow] = useState ([])
-    const [loading, setLoading] =useState (true)
     const {ranges} = useParams();
 
     function callItems() {
 
-        setLoading(true);
+
         const ItemCollection = dataBase.collection("item")
         ItemCollection.get().then((ItemQuery)=> {
             if (ItemQuery.size === 0) {
@@ -46,7 +45,7 @@ export const ItemLister = () => {
             }).catch((error)=>{
                 console.log('error, no items found',error);
             }).finally(()=>{
-                setLoading(false);
+                console.log("operation finished")
             });
         
     }

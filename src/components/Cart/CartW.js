@@ -8,7 +8,7 @@ const NoDisplay = {
     display:"none"
 }
 
-const ButtonStyle = {
+const CartQuanitity = {
 
     display: "flex",
     alignItems: "center",
@@ -33,7 +33,7 @@ export const CartW = () => {
         <div >
 
             <Link to='../cart' ><img src={CARTING} alt="cart" id="cartST"></img></Link>
-            <p style={CartCount>0?ButtonStyle:NoDisplay}>{CartCount}</p>
+            <p style={CartCount===0?NoDisplay:CartQuanitity}>{CartCount}</p>
 
         </div>
         

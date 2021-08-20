@@ -8,7 +8,6 @@ export const CartProvider = ({children}) => {
     const [CartItem,setCartItem] = useState([])
     const [Price,setPrice] = useState(0)
     const [CartCount,setCartCount] = useState(0)
-    console.log("CART ITEM",CartItem)
 
     function UpdateObject(Product,data) {    
 

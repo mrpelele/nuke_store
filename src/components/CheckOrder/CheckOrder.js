@@ -1,10 +1,9 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState} from 'react'
 import {dataBase} from '../../FireBase/firebase'
 import './CheckOrder.css'
 
 export const CheckOrder = () => {
 
-    const [loading, setLoading] = useState (false)
     const [items, setItems] = useState ([])
     const [prepareID, setPrepareID] = useState ('')
     const [check,setCheck] = useState(false)
@@ -18,7 +17,6 @@ export const CheckOrder = () => {
 
     async function CallItems() {
 
-        setLoading(true);
         const ItemCollection = await dataBase.collection("orders").doc(prepareID).get().then(orderCall =>{
 
             if (orderCall.size === 0) {
@@ -30,7 +28,6 @@ export const CheckOrder = () => {
         }).catch((error)=>{
                 console.log('error, no items found',error);
         }).finally(()=>{
-                setLoading(false);
                 setCheck(true)
         });
         
@@ -48,32 +45,38 @@ export const CheckOrder = () => {
                         
                 </div>
 
-                        <input className={'inputButtonStyle'} type="submit" value="search item"/>
+                        <input  disabled={prepareID.length===0?true:false} className={'inputButtonStyle'} type="submit" value="search item"/>
             </form>
 
-            {items.map((data,w)=>
 
-                <section className={check?'SectionMapStyle':'noDisplay'} key={w}>
+                {items.map((data,w)=>
 
-                    <h1 className={'SectionMapStyleH1'}>this is your current order</h1>
+                    <section className={check?'SectionMapStyle':'noDisplay'} key={w}>
 
-                    {data.items.map((data,w) =>
+                        <h1 className={'SectionMapStyleH1'}>this is your current order</h1>
 
-                        
-                    
-                    <p>{data.count} {data.name}</p>    
+                            {data.items.map((data,w) =>
 
-                    )}
+                                
+                            
+                            <p>{data.count} {data.name}</p>    
 
-                <h2 className={'SectionMapStyleH2'}>for a total of {data.totalCost}$</h2>
+                        )}
 
-                <button className={'ButtonStyle'} onClick={() =>setCheck(false)}>ups, this is noy my order</button>
+                        <h2 className={'SectionMapStyleH2'}>for a total of {data.totalCost}$</h2>
 
-                </section>
+                    <button className={'ButtonStyle'} onClick={() =>setCheck(false)}>ups, this is noy my order</button>
 
-            )} 
+                    </section>
+
+                )} 
+
+
+
 
         </section>
 
     )
 }
+
+

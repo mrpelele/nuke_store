@@ -25,6 +25,22 @@ const ButtonStyle = {
 
 };
 
+const ButtonStyle_DISABLED = {
+
+    display: "flex",
+    flexDirection:"column",
+    alignContent: "center",
+    border: "none",
+    backgroundColor: "white",
+    color: "gray",
+    fontSize: "2rem",
+    textAlign: "center",
+    textDecoration: "none",
+    width: "10rem",
+    border: "1px solid"
+
+};
+
 const ButtonStyle2 = {
 
     display: "flex",
@@ -33,6 +49,22 @@ const ButtonStyle2 = {
     border: "none",
     backgroundColor: "white",
     color: "black",
+    fontSize: "2rem",
+    textAlign: "center",
+    textDecoration: "none",
+    width: "11rem",
+    border: "1px solid"
+
+};
+
+const ButtonStyle2_DISABLED = {
+
+    display: "flex",
+    flexDirection:"column",
+    alignContent: "center",
+    border: "none",
+    backgroundColor: "white",
+    color: "gray",
     fontSize: "2rem",
     textAlign: "center",
     textDecoration: "none",
@@ -128,7 +160,7 @@ export const CartDisplay = () =>{
 
                         <title className={'ItemTitle'}>
 
-                            Items in cart
+                            {CartItem.length>0?'Items in cart':'there are no items in your cart'}
 
                         </title>
 
@@ -141,8 +173,8 @@ export const CartDisplay = () =>{
 
                                     <div className={'ItemDisplay'}>
 
-                                        <h2 className={'ItemDisplay--content'} key={w}>{data.count} {data.name}</h2>
-                                        <button className={'ItemDisplay--content'} style={ButtonStyle} onClick={() => DeleteSpecificItem(data.id,data.price,data.count)}>remove this item</button>
+                                        <h2 className={'ItemDisplay--content'} key={w}>{data.count} {data.name} ${data.price*data.count}</h2>
+                                        <button disabled={loading==true?true:false} className={'ItemDisplay--content'} style={loading==true?ButtonStyle_DISABLED:ButtonStyle} onClick={() => DeleteSpecificItem(data.id,data.price,data.count)}>remove this item</button>
 
                                     </div>
 
@@ -159,7 +191,7 @@ export const CartDisplay = () =>{
 
                     <div style={{fontSize:'2rem',marginLeft:'1rem'}}>
 
-                        <p style={loading?nothing:NoDisplay}>total cost:{Price}</p>
+                        <p style={loading?nothing:NoDisplay}>total cost: ${Price}</p>
 
                     </div>
 
@@ -181,7 +213,7 @@ export const CartDisplay = () =>{
                                 <input style={PlaceOrderColumn} type="email" name="email" placeholder="email" onChange={(data) => setUserData({...userData,[data.target.name]:data.target.value})}/>
                             </div>
 
-                            <input type="submit" value="place order" style={ButtonStyle2}/>
+                            <input disabled={userData.userName.length===0 || userData.email.length===0?true:false} type="submit" value="place order" style={userData.userName.length===0 || userData.email.length===0?ButtonStyle2_DISABLED:ButtonStyle2}/>
 
                         </form>
 
