@@ -28,7 +28,13 @@ export const CartProvider = ({children}) => {
       
             setCartItem([...NewItems,ItemUpdate])
             setPrice(Price+(Product.price * data))
-            setCartCount(Product.count)
+            setCartCount(CartCount+data)
+
+            if (ItemUpdate.count===0) {
+
+                DeleteSpecificItem(ItemUpdate.id,ItemUpdate.price,ItemUpdate.count)
+
+            }
            
         } else {
 
@@ -66,7 +72,7 @@ export const CartProvider = ({children}) => {
 
     }
 
-    return <CartContext.Provider value={{CartItem,CartCount,Price,setCartItem,UpdateObject,DeleteAllItems,DeleteSpecificItem}}>
+    return <CartContext.Provider value={{CartItem,setCartCount,CartCount,Price,setCartItem,UpdateObject,DeleteAllItems,DeleteSpecificItem}}>
         {children}
     </CartContext.Provider>
 }

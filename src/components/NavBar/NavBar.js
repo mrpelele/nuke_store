@@ -19,7 +19,7 @@ export const NavBar = () => {
 
                 <div className="dropdownMenu">
 
-                    <a className={'linkStyle'} href="">filter</a>
+                    <div className={'linkStyle'} href="">filter</div>
 
                     <ul className="dropdownMenu-Content">
                         <li>RANGE</li>

@@ -8,7 +8,7 @@ const NoDisplay = {
     display:"none"
 }
 
-const CartQuanitity = {
+const CartQuanitityStyle = {
 
     display: "flex",
     alignItems: "center",
@@ -28,12 +28,14 @@ export const CartW = () => {
 
     const {CartCount} = useContext(CartContext)
 
+    console.log(CartCount)
+
     return (
     
         <div >
 
             <Link to='../cart' ><img src={CARTING} alt="cart" id="cartST"></img></Link>
-            <p style={CartCount===0?NoDisplay:CartQuanitity}>{CartCount}</p>
+            <p style={CartCount===0?NoDisplay:CartQuanitityStyle}>{CartCount}</p>
 
         </div>
         

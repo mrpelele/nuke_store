@@ -65,7 +65,7 @@ export const CheckOrder = () => {
 
                         <h2 className={'SectionMapStyleH2'}>for a total of {data.totalCost}$</h2>
 
-                    <button className={'ButtonStyle'} onClick={() =>setCheck(false)}>ups, this is noy my order</button>
+                    <button className={'ButtonStyle'} onClick={() =>setCheck(false)}>ups, this is not my order</button>
 
                     </section>
 

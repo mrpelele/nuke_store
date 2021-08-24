@@ -68,7 +68,7 @@ export function Counter({stock,noStock,itemAR}) {
     const [Intern,setIntern] = useState(0);
     const [ClassChange,setClassChange] = useState(true);
 
-    const {UpdateObject,DeleteSpecificItem} = useContext(CartContext)
+    const {UpdateObject,CartCount,setCartCount} = useContext(CartContext)
     
     const history = useHistory();  
 
@@ -98,12 +98,13 @@ export function Counter({stock,noStock,itemAR}) {
 
     function CancelBuy(data) {
         
-        Buy(data)
-        setIntern(data)
-        setCount(data)
+        Buy(data*(-1))
+        setIntern(data*(-1))
+        setCount(data-data)
+        setCartCount(CartCount-data)
         setClassChange(true)
-        
-        
+        console.log(count)
+               
     }  
 
     const prus = () => {
@@ -129,7 +130,7 @@ export function Counter({stock,noStock,itemAR}) {
                 <ShowMessage count={count}/>
             </div>
 
-            <button style={carritou3} disabled={Intern>0?false:true} onClick={() => CancelBuy(0)}>Cancelar</button>
+            <button style={carritou3} disabled={Intern>0?false:true} onClick={() => CancelBuy(count)}>Cancelar</button>
             <button style={carritou2} disabled={Intern>0?false:true} onClick={() => TrueBuy()}>Terminar Compra</button>
             
             <div style={ClassChange?null:carritouD}>

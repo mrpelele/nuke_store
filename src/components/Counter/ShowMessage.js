@@ -1,10 +1,15 @@
 import React from 'react'
 
-export const ShowMessage = (element) => {
+export const ShowMessage = (data) => {
+
+    console.log(data)
 
     return (
+
         <div>
-            {element.count}
+            
+            {data.count}
+
         </div>
     )
    

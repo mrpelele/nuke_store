@@ -46,8 +46,8 @@ const ButtonStyle2 = {
     display: "flex",
     flexDirection:"column",
     alignContent: "center",
+    justifyContent: "center",
     border: "none",
-    backgroundColor: "white",
     color: "black",
     fontSize: "2rem",
     textAlign: "center",
@@ -109,7 +109,8 @@ export const CartDisplay = () =>{
     const [userData,setUserData] = useState(
         {            
         userName:"",
-        email:""
+        email:"",
+        tel:""
         }
     )
 
@@ -211,6 +212,7 @@ export const CartDisplay = () =>{
                             <div style={{paddingRight:'1rem'}}>
                                 <input style={PlaceOrderColumn} type="text" name="userName" placeholder="name" onChange={(data) => setUserData({...userData,[data.target.name]:data.target.value})}/>
                                 <input style={PlaceOrderColumn} type="email" name="email" placeholder="email" onChange={(data) => setUserData({...userData,[data.target.name]:data.target.value})}/>
+                                <input style={PlaceOrderColumn} type="tel" name="tel" placeholder="tel" onChange={(data) => setUserData({...userData,[data.target.name]:data.target.value})}/>
                             </div>
 
                             <input disabled={userData.userName.length===0 || userData.email.length===0?true:false} type="submit" value="place order" style={userData.userName.length===0 || userData.email.length===0?ButtonStyle2_DISABLED:ButtonStyle2}/>
